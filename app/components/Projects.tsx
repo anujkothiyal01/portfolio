@@ -6,14 +6,14 @@ export default function Projects() {
       title: "Project 1",
       description:
         "A brief description of the first project. It involved building a responsive web application using React.",
-      image: "/Blogging Application.png", // Replace with actual image path
+      image: "./Blogging Application.png", // Replace with actual image path
       link: "https://project1.com", // Replace with project link
     },
     {
       title: "Project 2",
       description:
         "A data analysis project where I worked with large datasets to derive actionable insights using Python.",
-      image: "/pro2.png", // Replace with actual image path
+      image: "./pro2.png", // Replace with actual image path
       link: "https://project2.com", // Replace with project link
     },
     {
