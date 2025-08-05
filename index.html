@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuj Kothiyal - GenAI & Data Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome for new icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
+        }
+        .glass-effect {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .skill-tag {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            background-color: #334155;
+            color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #334155;
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+        }
+        .typewriter-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.5em;
+            background-color: #38bdf8;
+            animation: blink 1s infinite;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        /* Floating label styles */
+        .form-group input:placeholder-shown ~ label,
+        .form-group textarea:placeholder-shown ~ label {
+            font-size: 1rem;
+            cursor: text;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .form-group input:focus ~ label,
+        .form-group input:not(:placeholder-shown) ~ label,
+        .form-group textarea:focus ~ label,
+        .form-group textarea:not(:placeholder-shown) ~ label {
+            top: -0.5rem;
+            font-size: 0.75rem;
+            color: #38bdf8;
+        }
+        /* Scroll reveal animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">Anuj Kothiyal</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-slate-300 hover:text-sky-400 transition">About</a>
+                <a href="#skills" class="text-slate-300 hover:text-sky-400 transition">Skills</a>
+                <a href="#projects" class="text-slate-300 hover:text-sky-400 transition">Projects</a>
+                <a href="#experience" class="text-slate-300 hover:text-sky-400 transition">Experience</a>
+                <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-medium py-2 px-4 rounded-lg transition">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-slate-900/95 z-40">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#about" class="mobile-link text-2xl text-slate-300 hover:text-sky-400 transition">About</a>
+            <a href="#skills" class="mobile-link text-2xl text-slate-300 hover:text-sky-400 transition">Skills</a>
+            <a href="#projects" class="mobile-link text-2xl text-slate-300 hover:text-sky-400 transition">Projects</a>
+            <a href="#experience" class="mobile-link text-2xl text-slate-300 hover:text-sky-400 transition">Experience</a>
+            <a href="#contact" class="mobile-link bg-sky-500 hover:bg-sky-600 text-white font-medium py-3 px-6 rounded-lg transition text-xl">Contact</a>
+        </div>
+    </div>
+
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center bg-grid-slate-800/[0.2]">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                        Building the Future with
+                        <span id="typewriter" class="text-sky-400"></span><span class="typewriter-cursor"></span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8">
+                        I'm Anuj Kothiyal, a passionate engineer at the intersection of Generative AI and Data Engineering, crafting intelligent systems from robust data foundations.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#projects" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition text-lg">View My Work</a>
+                        <a href="/alex-doe-resume.pdf" target="_blank" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-8 rounded-lg transition text-lg">My Resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-2">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x400/0f172a/38bdf8?text=Anuj+Kothiyal" alt="Anuj Kothiyal" class="rounded-lg w-full h-auto shadow-2xl" onerror="this.onerror=null;this.src='https://placehold.co/400x400/0f172a/e2e8f0?text=Image+Not+Found';">
+                            <div class="absolute -top-4 -left-4 w-full h-full border-4 border-sky-500 rounded-lg -z-10 transform -rotate-3"></div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-3">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
+                        <p class="text-slate-400 mb-4">
+                            Hello! I'm Anuj, an engineer with a dual passion for building scalable data pipelines and developing cutting-edge generative AI models. My journey in tech began with a fascination for how data can be structured and utilized, which naturally led me to the world of data engineering. I've designed and implemented ETL/ELT processes, built data warehouses, and ensured data quality for large-scale applications.
+                        </p>
+                        <p class="text-slate-400 mb-6">
+                            More recently, I've dived deep into the realm of Generative AI. From fine-tuning Large Language Models (LLMs) to building Retrieval-Augmented Generation (RAG) systems and deploying AI-powered applications, I thrive on bridging the gap between raw data and intelligent, creative outputs. I believe the most powerful AI systems are built on a foundation of clean, reliable, and well-architected data.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/yourusername" target="_blank" class="text-slate-400 hover:text-sky-400"><i data-lucide="github" class="w-8 h-8"></i></a>
+                            <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-slate-400 hover:text-sky-400"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
+                            <a href="https://x.com/anuj__kothiyal" target="_blank" class="text-slate-400 hover:text-sky-400"><i data-lucide="twitter" class="w-8 h-8"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32 bg-slate-900/70">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">My Technical Toolkit</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-sky-400 mb-6 text-center md:text-left">Generative AI</h3>
+                        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">LLM Fine-Tuning</span>
+                            <span class="skill-tag">RAG Systems</span>
+                            <span class="skill-tag">Vector Databases (Pinecone, Chroma)</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">OpenAI API</span>
+                            <span class="skill-tag">Prompt Engineering</span>
+                            <span class="skill-tag">FastAPI</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-sky-400 mb-6 text-center md:text-left">Data Engineering</h3>
+                        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                            <span class="skill-tag">SQL & NoSQL</span>
+                            <span class="skill-tag">Apache Spark</span>
+                            <span class="skill-tag">Apache Airflow</span>
+                            <span class="skill-tag">dbt</span>
+                            <span class="skill-tag">ETL/ELT Pipelines</span>
+                            <span class="skill-tag">Data Warehousing (BigQuery, Snowflake)</span>
+                            <span class="skill-tag">AWS (S3, EC2, Lambda, Glue)</span>
+                            <span class="skill-tag">GCP (Cloud Storage, Compute Engine)</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">Kafka</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-4">Featured Projects</h2>
+                <p class="text-slate-400 text-center max-w-2xl mx-auto mb-12">Here's a selection of projects that showcase my skills. I've built everything from the data pipelines to the final AI-powered applications.</p>
+
+                <div class="flex justify-center space-x-2 md:space-x-4 mb-12">
+                    <button class="filter-btn bg-sky-500 text-white py-2 px-4 rounded-lg font-medium" data-filter="all">All</button>
+                    <button class="filter-btn bg-slate-700 hover:bg-slate-600 text-white py-2 px-4 rounded-lg font-medium" data-filter="genai">Generative AI</button>
+                    <button class="filter-btn bg-slate-700 hover:bg-slate-600 text-white py-2 px-4 rounded-lg font-medium" data-filter="data">Data Engineering</button>
+                </div>
+
+                <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card glass-effect rounded-lg overflow-hidden" data-category="genai">
+                        <img src="https://placehold.co/600x400/0f172a/38bdf8?text=Vistar+AI" alt="Project 1" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/e2e8f0?text=Image+Not+Found';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2"><a href="https://cortexbloom.com">The Enterprise AI for Grounded Knowledge</a></h3>
+                            <p class="text-slate-400 mb-4 text-sm">Vistar is an enterprise-grade RAG chatbot that delivers instant, accurate answers by drawing from your company’s internal knowledge base. It streamlines information access and boosts team productivity by grounding every response in your proprietary data.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">LangChain</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">RAG</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">Pinecone</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">FastAPI</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-card glass-effect rounded-lg overflow-hidden" data-category="data">
+                        <img src="https://placehold.co/600x400/0f172a/38bdf8?text=Project+2" alt="Project 2" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/e2e8f0?text=Image+Not+Found';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Real-time E-commerce Analytics Platform</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Engineered a scalable data pipeline using Kafka and Spark Streaming to process millions of events per day, feeding a live dashboard for business intelligence.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">Kafka</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">Spark</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">Airflow</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">BigQuery</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card glass-effect rounded-lg overflow-hidden" data-category="genai">
+                         <img src="https://placehold.co/600x400/0f172a/38bdf8?text=Project+3" alt="Project 3" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/e2e8f0?text=Image+Not+Found';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Corporate Knowledge-Base Chatbot</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Developed a RAG-based chatbot that allows employees to query internal company documents using natural language, significantly reducing support ticket volume.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">RAG</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">Vector DB</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">PyTorch</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">GCP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="project-card glass-effect rounded-lg overflow-hidden" data-category="data">
+                        <img src="https://placehold.co/600x400/0f172a/38bdf8?text=Project+4" alt="Project 4" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f172a/e2e8f0?text=Image+Not+Found';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Cloud Data Warehouse Modernization</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Led the migration of an on-premise SQL server to a cloud-native data warehouse on Snowflake, including refactoring ETL jobs using dbt for modularity and testing.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">Snowflake</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">dbt</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">AWS Glue</span>
+                                <span class="text-xs bg-sky-900/50 text-sky-300 py-1 px-2 rounded-md">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 md:py-32 bg-slate-900/70">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Professional Journey</h2>
+                <div class="relative max-w-3xl mx-auto timeline">
+                    <!-- Timeline Item 1 -->
+                    <div class="mb-8 flex justify-between md:justify-normal md:odd:flex-row-reverse items-center w-full">
+                        <div class="hidden md:block w-5/12"></div>
+                        <div class="z-10">
+                            <div class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white">
+                                <i data-lucide="briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-5/12 bg-slate-800 rounded-lg p-6 shadow-lg">
+                            <p class="text-sm text-slate-400 mb-1">2025 - Present</p>
+                            <h3 class="text-xl font-bold text-white">Data Engineer</h3>
+                            <p class="text-md text-slate-300 mb-2">Mactores Cognition Inc.</p>
+                            <p class="text-slate-400 text-sm">Leading development of GenAI applications and optimizing data infrastructure for AI/ML workloads.</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item 2 -->
+                    <div class="mb-8 flex justify-between md:justify-normal md:odd:flex-row-reverse items-center w-full">
+                        <div class="hidden md:block w-5/12"></div>
+                        <div class="z-10">
+                             <div class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-5/12 bg-slate-800 rounded-lg p-6 shadow-lg">
+                            <p class="text-sm text-slate-400 mb-1">2023 - 2025</p>
+                            <h3 class="text-xl font-bold text-white">Master of Computer Applications - MCA</h3>
+                            <p class="text-md text-slate-300 mb-2">Graphic Era Hill University, Uttarakhand, India</p>
+                            <p class="text-slate-400 text-sm">Built and maintained scalable ETL pipelines, developed data models, and managed cloud data platforms on AWS.</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item 3 -->
+                    <div class="mb-8 flex justify-between md:justify-normal md:odd:flex-row-reverse items-center w-full">
+                        <div class="hidden md:block w-5/12"></div>
+                        <div class="z-10">
+                             <div class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-5/12 bg-slate-800 rounded-lg p-6 shadow-lg">
+                            <p class="text-sm text-slate-400 mb-1">2020 - 2023</p>
+                            <h3 class="text-xl font-bold text-white">Bachelor of Computer Applications - BCA</h3>
+                            <p class="text-md text-slate-300 mb-2">HNBGU, Uttarakhand, India</p>
+                            <p class="text-slate-400 text-sm">Specialized in Machine Learning and Distributed Systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-4 scroll-reveal">Contact Me</h2>
+                <p class="text-slate-400 text-center max-w-2xl mx-auto mb-12 scroll-reveal">Let’s discuss how I can help with your data challenges!</p>
+                <form class="max-w-xl mx-auto scroll-reveal" id="contactForm">
+                    <div class="relative form-group mb-8">
+                        <input type="text" id="name" class="peer w-full p-3 bg-slate-800 border-2 border-slate-700 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-sky-500 transition" placeholder=" " required>
+                        <label for="name" class="absolute left-3 -top-2.5 text-slate-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sky-400 peer-focus:text-sm">Name</label>
+                    </div>
+                    <div class="relative form-group mb-8">
+                        <input type="email" id="email" class="peer w-full p-3 bg-slate-800 border-2 border-slate-700 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-sky-500 transition" placeholder=" " required>
+                        <label for="email" class="absolute left-3 -top-2.5 text-slate-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sky-400 peer-focus:text-sm">Email</label>
+                    </div>
+                    <div class="relative form-group mb-8">
+                        <textarea id="message" rows="5" class="peer w-full p-3 bg-slate-800 border-2 border-slate-700 rounded-lg text-white placeholder-transparent focus:outline-none focus:border-sky-500 transition" placeholder=" " required></textarea>
+                        <label for="message" class="absolute left-3 -top-2.5 text-slate-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sky-400 peer-focus:text-sm">Your Message</label>
+                    </div>
+                    <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition text-lg">Send Message</button>
+                </form>
+                <p id="responseMessage" class="text-center mt-6 text-green-400 font-medium"></p>
+                <div class="flex justify-center items-center space-x-8 mt-12 scroll-reveal">
+                    <a href="https://www.linkedin.com/in/anujkothiyal/" target="_blank" class="flex items-center space-x-2 text-slate-400 hover:text-sky-400 transition-colors"><i class="fab fa-linkedin text-2xl"></i> <span>LinkedIn</span></a>
+                    <a href="https://github.com/anujkothiyal01" target="_blank" class="flex items-center space-x-2 text-slate-400 hover:text-sky-400 transition-colors"><i class="fab fa-github text-2xl"></i> <span>GitHub</span></a>
+                    <a href="resume.pdf" download class="flex items-center space-x-2 text-slate-400 hover:text-sky-400 transition-colors"><i class="fas fa-file-download text-2xl"></i> <span>Download Resume</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900/70 py-8">
+        <div class="container mx-auto px-6 text-center text-slate-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/yourusername" target="_blank" class="hover:text-sky-400"><i data-lucide="github" class="w-6 h-6"></i></a>
+                <a href="https://linkedin.com/in/anujkothiyal" target="_blank" class="hover:text-sky-400"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="https://x.com/anuj__kothiyal" target="_blank" class="hover:text-sky-400"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+            </div>
+            <p>&copy; 2025 Anuj Kothiyal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://api.whatsapp.com/send/?phone=919997305983&text=Hello%2C%20I’m%20interested%20in%20connecting%20with%20you%20regarding%20data%20engineering%20opportunities.%20Could%20we%20discuss%20further%3F" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('glass-effect', 'shadow-lg');
+            } else {
+                header.classList.remove('glass-effect', 'shadow-lg');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter');
+        const words = ["Generative AI.", "Data Engineering.", "Intelligent Systems."];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+            }
+
+            const typeSpeed = isDeleting ? 100 : 200;
+            setTimeout(type, typeSpeed);
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            if (words.length) {
+                setTimeout(type, 1000);
+            }
+        });
+
+        // Project Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update button styles
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-sky-500');
+                    btn.classList.add('bg-slate-700', 'hover:bg-slate-600');
+                });
+                button.classList.add('bg-sky-500');
+                button.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+
+                const filter = button.dataset.filter;
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const responseMessage = document.getElementById('responseMessage');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real application, you would send this data to a server.
+            // For this demo, we'll just show a success message.
+            responseMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+            contactForm.reset();
+            setTimeout(() => {
+                responseMessage.textContent = '';
+            }, 5000);
+        });
+
+        // Scroll Reveal Animation
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        scrollRevealElements.forEach(element => {
+            observer.observe(element);
+        });
+
+    </script>
+</body>
+</html>
