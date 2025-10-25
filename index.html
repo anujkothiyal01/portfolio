@@ -4,92 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anuj Kothiyal - Agentic AI Developer</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-    <!-- Ensure this path is correct for your project structure -->
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="scanlines"></div>
-    <div class="gradient-overlay"></div>
 
-    <div class="terminal-wrapper">
-        
-        <header class="terminal-header">
-            <div class="header-left">
-                <span class="header-logo">Anuj Kothiyal</span>
-            </div>
-            <nav class="header-nav">
-                <button class="nav-button active" data-target="home"><i class="bi bi-terminal"></i> /boot</button>
-                <button class="nav-button" data-target="profile"><i class="bi bi-person-lines-fill"></i> /profile</button>
-                <button class="nav-button" data-target="projects"><i class="bi bi-braces-asterisk"></i> /projects</button>
-                <button class="nav-button" data-target="experience"><i class="bi bi-archive"></i> /experience</button>
-                <!-- NEW CERTIFICATION BUTTON ADDED -->
-                <button class="nav-button" data-target="certs"><i class="bi bi-patch-check-fill"></i> /certs</button>
-                <button class="nav-button" data-target="contact"><i class="bi bi-envelope"></i> /contact</button>
+    <div class="background-gradient"></div>
+    
+    <button class="agent-fab" id="agent-fab-toggle" aria-label="Open AI Agent">
+        <i class="bi bi-robot"></i>
+    </button>
+
+    <div class="container">
+
+        <header class="main-header">
+            <div class="logo">A.K.</div>
+            <nav class="main-nav">
+                <a href="#home" class="nav-link active">/home</a>
+                <a href="#projects" class="nav-link">/projects</a>
+                <a href="#about" class="nav-link">/about</a>
+                <a href="#contact" class="nav-link">/contact</a>
             </nav>
-            <div class="header-right">
-                <!-- Ensure this path is correct -->
-                <a href="Anuj Kothiyal.pdf" target="_blank" class="btn-primary">[ Download Resume ]</a>
+            <div class="header-actions">
+                <a href="[YOUR_RESUME.PDF]" target="_blank" class="btn-primary">
+                    Download Resume <i class="bi bi-download"></i>
+                </a>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <i class="bi bi-list"></i>
+                </button>
             </div>
         </header>
+        
+        <nav class="mobile-nav">
+            <a href="#home" class="nav-link active">/home</a>
+            <a href="#projects" class="nav-link">/projects</a>
+            <a href="#about" class="nav-link">/about</a>
+            <a href="#contact" class="nav-link">/contact</a>
+        </nav>
 
-        <main class="content-window">
-            
-            <section class="content-section active" id="home">
-                <div class="boot-sequence">
-                    <div class="boot-line">> Booting agent... [OK]</div>
-                    <div class="boot-line">> Loading modules... [FastAPI, RAG, LangGraph, AWS, Snowflake]</div>
-                    <div class="boot-line">> Agent status: <span class="text-accent">ONLINE</span></div>
-                    <div class="boot-line">></div>
-                    <div class="boot-line">> Hello. I'm <span class="text-accent">Anuj Kothiyal</span>.</div>
-                    <h1 class="home-headline">I build <span id="typed-target"></span></h1>
-                    <!-- 
-                        This content is from your old resume. 
-                        We should update this to match your new resume summary. 
-                        Example: "Data Engineer and Python Developer building GenAI applications... (etc)"
-                    -->
-                    <p class="home-subhead">Driven AI/ML professional skilled in RAG, FastAPI, AWS, and Snowflake. As the Core Developer for CortexBloom (my personal project initiative), I am actively building advanced AI applications while seeking a full-time role.</p>
-                    <div class="home-socials">
-                        <a href="https://github.com/anujkothiyal01" target="_blank"><i class="bi bi-github"></i> github.com/anujkothiyal01</a>
-                        <a href="https://linkedin.com/in/anujkothiyal" target="_blank"><i class="bi bi-linkedin"></i> linkedin.com/in/anujkothiyal</a>
+        <main class="content-sections">
+
+            <section class="content-section" id="home">
+                <div class="hero-layout">
+                    <div class="hero-content">
+                        <h1>Anuj Kothiyal</h1>
+                        <h2 class="hero-subheadline">
+                            I build 
+                            <span id="typed-target"></span>
+                        </h2>
+                        <p class="hero-description">
+                            Agentic AI & Data Engineer specializing in RAG, LangGraph, and cloud-native systems. I create intelligent applications that can reason, plan, and interact with their environment.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn-primary">
+                                See My Work <i class="bi bi-arrow-right-short"></i>
+                            </a>
+                            <button class="btn-secondary" id="hero-ask-ai-btn">
+                                Ask My AI <i class="bi bi-chat-right-text"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <canvas id="agent-graph-animation"></canvas>
+                        <div class="visual-label">AGENT STATE GRAPH (simulated)</div>
                     </div>
                 </div>
             </section>
 
-            <section class="content-section" id="profile">
-                <h2 class="section-title"><i class="bi bi-person-lines-fill"></i> /profile</h2>
-                <div class="profile-grid">
-                    <div class="profile-summary">
-                        <!-- 
-                            This content is from your old resume. 
-                            You should update this with the new PROFILE SUMMARY bullets we wrote.
-                        -->
-                        <h3>SUMMARY</h3>
-                        <p>Results-driven Data Engineer and AI Developer skilled in Python, SQL, and building cloud-native data systems.</p>
-                        <p>Hands-on experience developing and deploying GenAI applications, specializing in RAG pipelines and creating high-performance APIs with FastAPI. Proficient in designing serverless ETL workflows using AWS (Lambda, Glue) and Snowflake (Snowpipe).</p>
-                    </div>
-                    <div class="profile-skills">
-                        <!-- 
-                            This content is from your old resume. 
-                            You should update this with the new CORE COMPETENCIES we wrote.
-                        -->
-                        <h3>CORE COMPETENCIES</h3>
-                        <div class="skill-category">
-                            <h4>Data & Cloud Engineering</h4>
+            <section class="content-section" id="projects">
+                <h2 class="section-title">/projects</h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="card-body">
+                            <div class="card-icon"><i class="bi bi-robot"></i></div>
+                            <h3>CortexVector – GenAI Math Tutor</h3>
+                            <p>(In-Progress) Exploring advanced agentic concepts by building an AI tutor. Implemented the core RAG pipeline with FastAPI and now exploring LangGraph for multi-step reasoning.</p>
+                        </div>
+                        <div class="card-footer">
                             <div class="tag-cloud">
-                                <span>AWS</span><span>Snowflake</span><span>ETL/ELT</span><span>SQL</span><span>MongoDB</span><span>S3</span><span>Lambda</span>
+                                <span>LangGraph</span><span>RAG</span><span>FastAPI</span><span>MongoDB</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="[GITHUB_LINK]" target="_blank"><i class="bi bi-github"></i> Code</a>
+                                <a href="#" class="ask-ai-link" data-context="CortexVector"><i class="bi bi-chat-right-text"></i> Ask AI about this</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="card-body">
+                            <div class="card-icon"><i class="bi bi-bar-chart-line"></i></div>
+                            <h3>E-Commerce Sales Analytics</h3>
+                            <p>Engineered an end-to-end ELT pipeline in Snowflake, ingesting real-time data from S3 via Snowpipe. Implemented multi-layer (Bronze, Silver, Gold) architecture.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="tag-cloud">
+                                <span>Snowflake</span><span>AWS S3</span><span>Snowpipe</span><span>SQL</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="[GITHUB_LINK]" target="_blank"><i class="bi bi-github"></i> Code</a>
+                                <a href="#" class="ask-ai-link" data-context="Snowflake pipeline"><i class="bi bi-chat-right-text"></i> Ask AI about this</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="card-body">
+                            <div class="card-icon"><i class="bi bi-cloud-arrow-down"></i></div>
+                            <h3>AWS Serverless ETL Pipeline</h3>
+                            <p>Developed a serverless ETL pipeline triggered by S3 uploads, using AWS Lambda for event-driven processing and AWS Glue for scalable data transformations.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="tag-cloud">
+                                <span>AWS Lambda</span><span>AWS Glue</span><span>S3</span><span>Python</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="[GITHUB_LINK]" target="_blank"><i class="bi bi-github"></i> Code</a>
+                                <a href="#" class="ask-ai-link" data-context="serverless ETL"><i class="bi bi-chat-right-text"></i> Ask AI about this</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="content-section" id="about">
+                <h2 class="section-title">/about</h2>
+                <div class="about-grid">
+                    <div class="about-summary">
+                        <h3>Profile Summary</h3>
+                        <p>Results-driven Data Engineer and AI Developer skilled in Python, SQL, and building cloud-native data systems. Hands-on experience developing and deploying GenAI applications, specializing in RAG pipelines and creating high-performance APIs with FastAPI.</p>
+                        
+                        <h3>Experience</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>Core AI Developer</h4>
+                                <h5>CortexBloom (Project Initiative) | Apr 2025 – Present</h5>
+                                <p>Self-directed initiative to build and deploy production-ready AI/Data projects, including CortexVector.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Data Engineer Intern</h4>
+                                <h5>Mactores | Mar 2025 – Present</h5>
+                                <p>Acquired practical experience in AWS and Snowflake ecosystems, including data warehousing and building reliable ELT data pipelines.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-skills">
+                        <h3>Core Competencies</h3>
+                        <div class="skill-category">
+                            <h4>Agentic AI & GenAI</h4>
+                            <div class="tag-cloud">
+                                <span>LangGraph</span><span>LangChain</span><span>RAG</span><span>GenAI</span><span>FastAPI</span>
                             </div>
                         </div>
                         <div class="skill-category">
-                            <h4>AI & Application Development</h4>
+                            <h4>Data & Cloud Engineering</h4>
                             <div class="tag-cloud">
-                                <span>Python</span><span>FastAPI</span><span>RAG</span><span>LangChain</span><span>LangGraph</span><span>GenAI</span>
+                                <span>Python</span><span>Snowflake</span><span>AWS</span><span>ETL/ELT</span><span>SQL</span><span>S3</span><span>Lambda</span>
                             </div>
                         </div>
                         <div class="skill-category">
@@ -101,198 +178,75 @@
                     </div>
                 </div>
             </section>
-
-            <section class="content-section" id="projects">
-                <h2 class="section-title"><i class="bi bi-braces-asterisk"></i> /projects</h2>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="card-header">
-                            <i class="bi bi-robot"></i>
-                            <h3>CortexVector – GenAI Math Tutor</h3>
-                        </div>
-                        <div class="card-body">
-                            <!-- This is the updated project description -->
-                            <p>(In-Progress) Personal project to build a GenAI math tutor and explore advanced agentic AI concepts. Implemented the core RAG pipeline using FastAPI and MongoDB, now exploring LangGraph.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tag-cloud">
-                                <span>RAG</span><span>FastAPI</span><span>LangGraph</span><span>MongoDB</span>
-                            </div>
-                            <div class="card-links">
-                                <!-- Don't forget to update this link -->
-                                <a href="https://github.com/anujkothiyal01/CortexVector" target="_blank"><i class="bi bi-github"></i> Code</a>
-                                <!-- <a href="#"><i class="bi bi-box-arrow-up-right"></i> Demo</a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="card-header">
-                            <i class="bi bi-bar-chart-line"></i>
-                            <h3>E-Commerce Sales Analytics Pipeline</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>Engineered an end-to-end ELT pipeline in Snowflake, ingesting real-time data from S3 via Snowpipe. Implemented multi-layer (Bronze, Silver, Gold) architecture for transformations.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tag-cloud">
-                                <span>Snowflake</span><span>AWS S3</span><span>Snowpipe</span><span>SQL</span>
-                            </div>
-                            <div class="card-links">
-                                <!-- Don't forget to update this link -->
-                                <a href="https://github.com/anujkothiyal01/E-Commerce-Sales-Analytics-Pipeline-using-Snowflake" target="_blank"><i class="bi bi-github"></i> Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="card-header">
-                            <i class="bi bi-cloud-arrow-down"></i>
-                            <h3>AWS Serverless ETL Pipeline</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>Developed a serverless ETL pipeline triggered by S3 uploads, using AWS Lambda for event-driven processing and AWS Glue for scalable data transformations.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tag-cloud">
-                                <span>AWS Lambda</span><span>AWS Glue</span><span>S3</span><span>IAM</span>
-                            </div>
-                            <div class="card-links">
-                                <!-- Don't forget to update this link -->
-                                <a href="[YOUR_GITHUB_LINK_HERE]" target="_blank"><i class="bi bi-github"></i> Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="content-section" id="experience">
-                <h2 class="section-title"><i class="bi bi-archive"></i> /experience_log</h2>
-                <div class="timeline">
-                    <!-- This is the updated Experience section -->
-                    <div class="timeline-item">
-                        <div class="timeline-meta">
-                            <span class="timeline-company">CortexBloom (Project Initiative)</span>
-                            <span class="timeline-date">Apr 2025 – Present</span>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>Core AI Developer</h4>
-                            <p>Self-directed initiative to build and deploy production-ready AI/Data projects. Currently building CortexVector (GenAI tutor) and other data pipelines while seeking a full-time role.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-meta">
-                            <span class="timeline-company">Mactores</span>
-                            <span class="timeline-date">Mar 2025 – Present</span>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>Data Engineer Intern</h4>
-                            <p>Acquired practical experience in AWS and Snowflake ecosystems, including data warehousing, query optimization, and building reliable ETL/ELT data pipelines.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- NEW CERTIFICATION SECTION -->
-            <section class="content-section" id="certs">
-                <h2 class="section-title"><i class="bi bi-patch-check-fill"></i> /certifications</h2>
-                <div class="cert-grid">
-                    
-                    <!-- Cert Card 1: Snowflake -->
-                    <div class="cert-card">
-                        <div class="card-header">
-                            <!-- 
-                                1. Download the official "SnowPro Core" badge.
-                                2. Save it as 'snowpro-badge.png' in a folder like '/static/images/' 
-                                3. Update the src path below.
-                            -->
-                            <img src="snowflake.png" alt="Snowflake SnowPro Core Badge" class="cert-badge" onerror="this.style.display='none'">
-                            <h3>Snowflake SnowPro Core</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>Validates core knowledge of Snowflake's cloud data platform, including data loading, transformations, and virtual warehouse management.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-links">
-                                <!-- 
-                                    1. Get your public verification link from Snowflake/Credly.
-                                    2. Paste the URL here.
-                                -->
-                                <a href="https://achieve.snowflake.com/52627549-00f3-4649-96b9-337564bfa79a#acc.ads6vEH1" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Verify Credential</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cert Card 2: AWS -->
-                    <div class="cert-card">
-                        <div class="card-header">
-                            <!-- 
-                                1. Download the official "AWS Cloud Practitioner" badge.
-                                2. Save it as 'aws-cpp-badge.png' in '/static/images/' 
-                                3. Update the src path below.
-                            -->
-                            <img src="aws.png" alt="AWS Cloud Practitioner Badge" class="cert-badge" onerror="this.style.display='none'">
-                            <h3>AWS Certified Cloud Practitioner</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>Validates a foundational understanding of AWS Cloud concepts, services, security, architecture, pricing, and support.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-links">
-                                <!-- 
-                                    1. Get your public verification link from AWS/Credly.
-                                    2. Paste the URL here.
-                                -->
-                                <a href="https://www.credly.com/badges/f986d1dd-8b1d-4a94-a417-6a84d110ea52" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Verify Credential</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END NEW SECTION -->
-
+            
             <section class="content-section" id="contact">
-                <h2 class="section-title"><i class="bi bi-envelope"></i> /contact_me</h2>
+                <h2 class="section-title">/contact</h2>
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h3>Open to new opportunities.</h3>
-                        <p>I'm currently seeking a full-time role where I can apply my skills in data and AI. Let's connect.</p>
-                        <div class="info-item">
-                            <i class="bi bi-geo-alt-fill"></i>
-                            <span>Rishikesh, Uttarakhand, India</span>
-                        </div>
+                        <h3>Let's build something intelligent.</h3>
+                        <p>I'm actively seeking full-time roles in AI and Data Engineering. If you have an opportunity or just want to connect, feel free to reach out.</p>
                         <div class="info-item">
                             <i class="bi bi-envelope-fill"></i>
                             <span>anujkothiyal01@gmail.com</span>
                         </div>
+                        <div class="info-item">
+                            <i class="bi bi-linkedin"></i>
+                            <span>linkedin.com/in/anujkothiyal</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="bi bi-github"></i>
+                            <span>github.com/anujkothiyal01</span>
+                        </div>
                     </div>
-                    <!-- 
-                        Don't forget to update this 'action' URL! 
-                        Go to formspree.io to create a new form endpoint.
-                    -->
                     <form class="contact-form" action="[YOUR_FORMSPREE_URL]" method="POST">
                         <div class="form-group">
-                            <label for="name">> user.name</label>
+                            <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">> user.email</label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">> message.body</label>
+                            <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary">[ Send_Message ]</button>
+                        <button type="submit" class="btn-primary">[ Send Message ]</button>
                     </form>
                 </div>
             </section>
+
         </main>
     </div>
 
+    <div class="agent-modal-overlay" id="agent-modal">
+        <div class="chat-wrapper">
+            <div class="chat-header">
+                <i class="bi bi-robot"></i>
+                <span>Anuj's AI Agent</span>
+                <span class="status-dot"></span>
+                <span class="status-text">Online</span>
+                <button class="chat-close-btn" id="agent-close-btn" aria-label="Close Chat">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message ai">
+                    <p>Hello. I'm Anuj's personal AI agent, trained on his resume, projects, and skills. Ask me anything about his qualifications, like "What is his experience with RAG?"</p>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <form id="chat-form">
+                    <input type="text" id="chat-input" placeholder="Message agent..." autocomplete="off">
+                    <button type="submit" aria-label="Send Message">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <!-- Ensure this path is correct for your project structure -->
     <script src="script.js"></script>
-
+    
 </body>
 </html>
-
-
