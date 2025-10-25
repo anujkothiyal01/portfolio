@@ -1,154 +1,152 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. Typed.js Hero Animation ---
-    if (document.getElementById('typed-target')) {
-        new Typed('#typed-target', {
-            strings: [
-                'Agentic AI Systems.',
-                'Cloud Data Pipelines.',
-                'RAG-Powered Applications.',
-                'High-Performance APIs'
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            loop: true,
-            backDelay: 2000
-        });
+    // --- Boot Sequence Logic ---
+    const bootLoader = document.getElementById('boot-loader');
+    const mainContent = document.getElementById('main-content');
+    const chatBubble = document.getElementById('chatBubble');
+
+    function runBootSequence() {
+        setTimeout(() => document.getElementById('boot-line-4').style.display = 'block', 700);
+        setTimeout(() => document.getElementById('boot-line-5').style.display = 'block', 1400);
+        setTimeout(() => document.getElementById('boot-line-6').style.display = 'block', 2000);
+        
+        // Fade out loader and fade in content
+        setTimeout(() => {
+            bootLoader.style.transition = 'opacity 0.5s ease';
+            bootLoader.style.opacity = '0';
+            
+            mainContent.style.display = 'block';
+            chatBubble.style.display = 'flex'; // Show the chat bubble
+            
+            setTimeout(() => {
+                bootLoader.style.display = 'none';
+                mainContent.style.opacity = '1'; // Start invisible for AOS
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                });
+            }, 500);
+        }, 2500);
     }
     
-    // --- 2. Mobile Menu Toggle ---
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileNav = document.querySelector('.mobile-nav');
-    menuToggle.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
+    runBootSequence(); // Start the boot sequence
+
+    // --- AI Agent Chatbot UI Logic ---
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChatBtn = document.getElementById('closeChatBtn');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    // Toggle chat window
+    chatBubble.addEventListener('click', () => {
+        chatWindow.style.display = 'flex'; // Use 'flex' to match CSS
     });
 
-    // Close mobile nav when a link is clicked
-    mobileNav.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-        });
+    closeChatBtn.addEventListener('click', () => {
+        chatWindow.style.display = 'none';
     });
 
-    // --- 3. Agent Chat Modal Logic ---
-    const agentModal = document.getElementById('agent-modal');
-    const fabToggle = document.getElementById('agent-fab-toggle');
-    const heroAskBtn = document.getElementById('hero-ask-ai-btn');
-    const closeBtn = document.getElementById('agent-close-btn');
-    const askAiLinks = document.querySelectorAll('.ask-ai-link');
-
-    function openModal() {
-        agentModal.classList.add('active');
-    }
-    function closeModal() {
-        agentModal.classList.remove('active');
-    }
-
-    // Open modal triggers
-    fabToggle.addEventListener('click', openModal);
-    heroAskBtn.addEventListener('click', openModal);
-
-    // Close modal triggers
-    closeBtn.addEventListener('click', closeModal);
-    agentModal.addEventListener('click', (e) => {
-        // Close if clicking on the overlay background
-        if (e.target === agentModal) {
-            closeModal();
-        }
-    });
-
-    // Handle "Ask AI about this" links
-    askAiLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const projectContext = link.getAttribute('data-context');
-            if (projectContext) {
-                const chatInput = document.getElementById('chat-input');
-                chatInput.value = `Tell me more about the ${projectContext} project.`;
-            }
-            openModal();
-            document.getElementById('chat-input').focus();
-        });
-    });
-
-    // --- 4. Chat Submission Logic (Identical to before) ---
-    const chatForm = document.getElementById('chat-form');
-    const chatInput = document.getElementById('chat-input');
-    const chatMessages = document.getElementById('chat-messages');
-
+    // Handle sending a message
     chatForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const userMessage = chatInput.value.trim();
-        if (userMessage === '') return;
-        addMessage(userMessage, 'user');
+        const messageText = chatInput.value.trim();
+        if (messageText === '') return;
+
+        // Display user's message
+        displayMessage(messageText, 'user');
+
+        // Clear input
         chatInput.value = '';
-        addMessage('...', 'ai typing');
-        setTimeout(() => getAgentResponse(userMessage), 1500);
+
+        // Get bot's response
+        getBotResponse(messageText);
     });
 
-    function addMessage(message, type) {
+    /**
+     * Displays a message in the chat window
+     * @param {string} message - The message text
+     * @param {string} sender - 'user' or 'bot'
+     */
+    function displayMessage(message, sender) {
         const messageElement = document.createElement('div');
-        messageElement.classList.add('message', type);
-        messageElement.innerHTML = `<p>${message}</p>`;
-        const typingIndicator = chatMessages.querySelector('.typing');
-        if (typingIndicator) {
-            typingIndicator.remove();
-        }
+        messageElement.classList.add('chat-message', sender);
+        messageElement.textContent = message;
         chatMessages.appendChild(messageElement);
+        
+        // Scroll to the bottom
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // MOCK AI BACKEND (Replace with your FastAPI call)
-    function getAgentResponse(userMessage) {
-        const lowerMessage = userMessage.toLowerCase();
-        let response = "I'm not sure how to answer that. Try asking about Anuj's skills in Python, RAG, or Snowflake.";
-        if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-            response = "Hello! How can I help you understand Anuj's qualifications?";
-        } else if (lowerMessage.includes('rag') || lowerMessage.includes('retrieval')) {
-            response = "Anuj has hands-on experience with RAG, particularly in building pipelines with LangChain and FastAPI. He used this in his CortexVector project to allow an AI to query a knowledge base of math problems.";
-        } else if (lowerMessage.includes('cortexvector')) {
-            response = "CortexVector is Anuj's personal project to build a GenAI math tutor. He's using it to explore advanced agentic concepts with LangGraph, building on a RAG core he already implemented.";
-        } else if (lowerMessage.includes('snowflake')) {
-            response = "Anuj gained experience with Snowflake as a Data Engineer Intern at Mactores. He is skilled in building ELT pipelines, using Snowpipe for data ingestion, and writing optimized SQL for transformations.";
-        }
-        addMessage(response, 'ai');
+    /**
+     * Shows the typing indicator
+     */
+    function showTypingIndicator() {
+        const typingElement = document.createElement('div');
+        typingElement.classList.add('chat-message', 'bot', 'chat-typing-indicator');
+        typingElement.id = 'typingIndicator';
+        typingElement.innerHTML = '<span></span><span></span><span></span>';
+        chatMessages.appendChild(typingElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // --- 5. Scroll-Spy (Highlights Nav on Scroll) ---
-    const sections = document.querySelectorAll('.content-section');
-    const allNavLinks = document.querySelectorAll('.main-nav .nav-link, .mobile-nav .nav-link');
+    /**
+     * Hides the typing indicator
+     */
+    function hideTypingIndicator() {
+        const typingElement = document.getElementById('typingIndicator');
+        if (typingElement) {
+            chatMessages.removeChild(typingElement);
+        }
+    }
 
-    const observerOptions = {
-        root: null, // observes intersections relative to the viewport
-        rootMargin: '0px',
-        threshold: 0.4 // 40% of the section must be visible
-    };
+    /**
+     * Gets a response from the bot (simulated)
+     * @param {string} userMessage - The user's message
+     */
+    async function getBotResponse(userMessage) {
+        // 1. Show the typing indicator
+        showTypingIndicator();
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                allNavLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + id) {
-                        link.classList.add('active');
-                    }
-                });
+        // --- TODO: This is where you connect to your *real* backend! ---
+        /*
+        try {
+            const response = await fetch('https://your-fastapi-backend.com/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: userMessage }),
+            });
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            const botMessage = data.reply; // Adjust based on your API's response
+            
+            // 3. Hide typing indicator
+            hideTypingIndicator();
+            // 4. Display the *real* message
+            displayMessage(botMessage, 'bot');
+
+        } catch (error) {
+            console.error('Error fetching bot response:', error);
+            hideTypingIndicator();
+            displayMessage("Sorry, I'm having trouble connecting to my brain right now.", 'bot');
+        }
+        */
+
+        // 3. --- Placeholder Logic (Remove this when you connect your backend) ---
+        setTimeout(() => {
+            let botMessage = "I'm a demo! Anuj is building my real RAG backend. Try asking me about 'Snowflake' or 'LangGraph'.";
+            
+            if (userMessage.toLowerCase().includes('snowflake')) {
+                botMessage = "Anuj has hands-on experience with Snowflake, including building ELT pipelines using Snowpipe for real-time ingestion, and Streams & Tasks for automated transformations.";
+            } else if (userMessage.toLowerCase().includes('langgraph')) {
+                botMessage = "Yes! He built his CortexVector math tutor using LangGraph. He used it to create a multi-step agentic reasoning flow for solving math problems.";
             }
-        });
-    }, observerOptions);
-
-    // Observe each section
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // --- 6. (Optional) Hero Canvas Animation ---
-    const canvas = document.getElementById('agent-graph-animation');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = 'rgba(0, 191, 255, 0.5)';
-        ctx.font = '12px "Fira Code"';
-        ctx.fillText('// Node graph animation loads here', 20, 30);
+            
+            // 4. Hide typing indicator
+            hideTypingIndicator();
+            // 5. Display the message
+            displayMessage(botMessage, 'bot');
+        }, 1500 + Math.random() * 500); // Simulate a 1.5-2s delay
+        // --- End of Placeholder Logic ---
     }
 });

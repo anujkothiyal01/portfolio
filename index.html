@@ -1,252 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuj Kothiyal - Agentic AI Developer</title>
+    <title>Anuj Kothiyal | AI Engineer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="background-gradient"></div>
-    
-    <button class="agent-fab" id="agent-fab-toggle" aria-label="Open AI Agent">
-        <i class="bi bi-robot"></i>
-    </button>
-
-    <div class="container">
-
-        <header class="main-header">
-            <div class="logo">A.K.</div>
-            <nav class="main-nav">
-                <a href="#home" class="nav-link active">/home</a>
-                <a href="#projects" class="nav-link">/projects</a>
-                <a href="#about" class="nav-link">/about</a>
-                <a href="#contact" class="nav-link">/contact</a>
-            </nav>
-            <div class="header-actions">
-                <a href="[YOUR_RESUME.PDF]" target="_blank" class="btn-primary">
-                    Download Resume <i class="bi bi-download"></i>
-                </a>
-                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-                    <i class="bi bi-list"></i>
-                </button>
-            </div>
-        </header>
-        
-        <nav class="mobile-nav">
-            <a href="#home" class="nav-link active">/home</a>
-            <a href="#projects" class="nav-link">/projects</a>
-            <a href="#about" class="nav-link">/about</a>
-            <a href="#contact" class="nav-link">/contact</a>
-        </nav>
-
-        <main class="content-sections">
-
-            <section class="content-section" id="home">
-                <div class="hero-layout">
-                    <div class="hero-content">
-                        <h1>Anuj Kothiyal</h1>
-                        <h2 class="hero-subheadline">
-                            I build 
-                            <span id="typed-target"></span>
-                        </h2>
-                        <p class="hero-description">
-                            Agentic AI & Data Engineer specializing in RAG, LangGraph, and cloud-native systems. I create intelligent applications that can reason, plan, and interact with their environment.
-                        </p>
-                        <div class="hero-actions">
-                            <a href="#projects" class="btn-primary">
-                                See My Work <i class="bi bi-arrow-right-short"></i>
-                            </a>
-                            <button class="btn-secondary" id="hero-ask-ai-btn">
-                                Ask My AI <i class="bi bi-chat-right-text"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="hero-visual">
-                        <canvas id="agent-graph-animation"></canvas>
-                        <div class="visual-label">AGENT STATE GRAPH (simulated)</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="content-section" id="projects">
-                <h2 class="section-title">/projects</h2>
-                <div class="project-grid">
-                    
-                    <div class="project-card">
-                        <div class="card-body">
-                            <div class="card-icon"><i class="bi bi-robot"></i></div>
-                            <h3>CortexVector – GenAI Math Tutor</h3>
-                            <p>(In-Progress) Exploring advanced agentic concepts by building an AI tutor. Implemented the core RAG pipeline with FastAPI and now exploring LangGraph for multi-step reasoning.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tag-cloud">
-                                <span>LangGraph</span><span>RAG</span><span>FastAPI</span><span>MongoDB</span>
-                            </div>
-                            <div class="card-links">
-                                <a href="[GITHUB_LINK]" target="_blank"><i class="bi bi-github"></i> Code</a>
-                                <a href="#" class="ask-ai-link" data-context="CortexVector"><i class="bi bi-chat-right-text"></i> Ask AI about this</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="card-body">
-                            <div class="card-icon"><i class="bi bi-bar-chart-line"></i></div>
-                            <h3>E-Commerce Sales Analytics</h3>
-                            <p>Engineered an end-to-end ELT pipeline in Snowflake, ingesting real-time data from S3 via Snowpipe. Implemented multi-layer (Bronze, Silver, Gold) architecture.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tag-cloud">
-                                <span>Snowflake</span><span>AWS S3</span><span>Snowpipe</span><span>SQL</span>
-                            </div>
-                            <div class="card-links">
-                                <a href="[GITHUB_LINK]" target="_blank"><i class="bi bi-github"></i> Code</a>
-                                <a href="#" class="ask-ai-link" data-context="Snowflake pipeline"><i class="bi bi-chat-right-text"></i> Ask AI about this</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="card-body">
-                            <div class="card-icon"><i class="bi bi-cloud-arrow-down"></i></div>
-                            <h3>AWS Serverless ETL Pipeline</h3>
-                            <p>Developed a serverless ETL pipeline triggered by S3 uploads, using AWS Lambda for event-driven processing and AWS Glue for scalable data transformations.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tag-cloud">
-                                <span>AWS Lambda</span><span>AWS Glue</span><span>S3</span><span>Python</span>
-                            </div>
-                            <div class="card-links">
-                                <a href="[GITHUB_LINK]" target="_blank"><i class="bi bi-github"></i> Code</a>
-                                <a href="#" class="ask-ai-link" data-context="serverless ETL"><i class="bi bi-chat-right-text"></i> Ask AI about this</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="content-section" id="about">
-                <h2 class="section-title">/about</h2>
-                <div class="about-grid">
-                    <div class="about-summary">
-                        <h3>Profile Summary</h3>
-                        <p>Results-driven Data Engineer and AI Developer skilled in Python, SQL, and building cloud-native data systems. Hands-on experience developing and deploying GenAI applications, specializing in RAG pipelines and creating high-performance APIs with FastAPI.</p>
-                        
-                        <h3>Experience</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <h4>Core AI Developer</h4>
-                                <h5>CortexBloom (Project Initiative) | Apr 2025 – Present</h5>
-                                <p>Self-directed initiative to build and deploy production-ready AI/Data projects, including CortexVector.</p>
-                            </div>
-                            <div class="timeline-item">
-                                <h4>Data Engineer Intern</h4>
-                                <h5>Mactores | Mar 2025 – Present</h5>
-                                <p>Acquired practical experience in AWS and Snowflake ecosystems, including data warehousing and building reliable ELT data pipelines.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-skills">
-                        <h3>Core Competencies</h3>
-                        <div class="skill-category">
-                            <h4>Agentic AI & GenAI</h4>
-                            <div class="tag-cloud">
-                                <span>LangGraph</span><span>LangChain</span><span>RAG</span><span>GenAI</span><span>FastAPI</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Data & Cloud Engineering</h4>
-                            <div class="tag-cloud">
-                                <span>Python</span><span>Snowflake</span><span>AWS</span><span>ETL/ELT</span><span>SQL</span><span>S3</span><span>Lambda</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Databases & DevOps</h4>
-                            <div class="tag-cloud">
-                                <span>MongoDB</span><span>MySQL</span><span>Pinecone</span><span>Git</span><span>Docker</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="content-section" id="contact">
-                <h2 class="section-title">/contact</h2>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Let's build something intelligent.</h3>
-                        <p>I'm actively seeking full-time roles in AI and Data Engineering. If you have an opportunity or just want to connect, feel free to reach out.</p>
-                        <div class="info-item">
-                            <i class="bi bi-envelope-fill"></i>
-                            <span>anujkothiyal01@gmail.com</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="bi bi-linkedin"></i>
-                            <span>linkedin.com/in/anujkothiyal</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="bi bi-github"></i>
-                            <span>github.com/anujkothiyal01</span>
-                        </div>
-                    </div>
-                    <form class="contact-form" action="[YOUR_FORMSPREE_URL]" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">[ Send Message ]</button>
-                    </form>
-                </div>
-            </section>
-
-        </main>
+    <div id="boot-loader">
+        <div id="boot-terminal">
+            <p>> Loading core modules...</p>
+            <p>> Compiling AI/ML skills...</p>
+            <p id="boot-line-5" style="display:none;">> System ready...</p>
+            <p id="boot-line-6" style="display:none;">> Welcome, visitor.</p>
+        </div>
     </div>
 
-    <div class="agent-modal-overlay" id="agent-modal">
-        <div class="chat-wrapper">
-            <div class="chat-header">
-                <i class="bi bi-robot"></i>
-                <span>Anuj's AI Agent</span>
-                <span class="status-dot"></span>
-                <span class="status-text">Online</span>
-                <button class="chat-close-btn" id="agent-close-btn" aria-label="Close Chat">
-                    <i class="bi bi-x-lg"></i>
+    <div id="main-content" style="display:none;">
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-nav">
+            <div class="container">
+                <a class="navbar-brand" href="#">anuj_kothiyal.ai</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-                <div class="message ai">
-                    <p>Hello. I'm Anuj's personal AI agent, trained on his resume, projects, and skills. Ask me anything about his qualifications, like "What is his experience with RAG?"</p>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#skills">skills</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#experience">experience</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#lab-notes">lab_notes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">contact</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="chat-input-area">
-                <form id="chat-form">
-                    <input type="text" id="chat-input" placeholder="Message agent..." autocomplete="off">
-                    <button type="submit" aria-label="Send Message">
-                        <i class="bi bi-send-fill"></i>
-                    </button>
-                </form>
+        </nav>
+
+        <header class="hero-section d-flex align-items-center">
+            <div class="container" data-aos="fade-in">
+                <h1 class="display-3 fw-bold">Building the Next Generation of Data and AI.</h1>
+                <p class="lead col-lg-8 mx-auto my-4">
+                    Data Engineer & AI Developer specializing in agentic AI (LangGraph), cloud data systems (AWS, Snowflake), and high-performance APIs (FastAPI). Currently exploring new frontiers at my personal AI lab, CortexBloom.
+                </p>
+                <a href="#projects" class="btn btn-primary btn-lg me-2">View My Projects</a>
+                <a href="Anuj Kothiyal.pdf" target="_blank" class="btn btn-outline-light btn-lg">Download Resume</a>
+            </div>
+        </header>
+
+        <section id="skills" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title mb-5">// my_toolkit</h2>
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card h-100 p-3 glass-card">
+                            <h4 class="card-header-custom"><i class="bi bi-robot me-2"></i>AI & LLM Development</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li>> LangGraph & LangChain</li>
+                                <li>> Retrieval-Augmented Generation (RAG)</li>
+                                <li>> Pinecone (Vector DB)</li>
+                                <li>> LLM Integration (Mistral, AWS Bedrock)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 p-3 glass-card">
+                            <h4 class="card-header-custom"><i class="bi bi-database-gear me-2"></i>Data Engineering & Databases</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li>> Snowflake (Snowpipe, Streams, Tasks)</li>
+                                <li>> AWS Glue & AWS Lambda (ETL/ELT)</li>
+                                <li>> SQL, MySQL, MongoDB</li>
+                                <li>> Data Warehousing & Pipelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card h-100 p-3 glass-card">
+                            <h4 class="card-header-custom"><i class="bi bi-cloud-arrow-up me-2"></i>Cloud, DevOps & APIs</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li>> Python (FastAPI, Flask)</li>
+                                <li>> AWS (S3, EC2, IAM)</li>
+                                <li>> Docker & Git</li>
+                                <li>> Serverless Architecture</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="certifications" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title mb-5">// validations</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-5 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card text-center p-3 glass-card">
+                            <!-- <img src="snowflake.png" alt="SnowPro Core Badge" class="img-fluid rounded-circle mx-auto" style="width: 120px;"> -->
+                            <h5 class="mt-3 mb-1">Snowflake SnowPro Core</h5>
+                            <p class="text-muted-custom">Snowflake</p>
+                            <a href="YOUR_SNOWFLAKE_CERT_LINK" target="_blank" class="btn btn-outline-light btn-sm mt-auto">Verify Credential <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card text-center p-3 glass-card">
+                            <!-- <img src="https://via.placeholder.com/150/FFFFFF/0A192F?text=AWS" alt="AWS Cloud Practitioner Badge" class="img-fluid rounded-circle mx-auto" style="width: 120px;"> -->
+                            <h5 class="mt-3 mb-1">AWS Certified Cloud Practitioner</h5>
+                            <p class="text-muted-custom">Amazon Web Services</p>
+                            <a href="YOUR_AWS_CERT_LINK" target="_blank" class="btn btn-outline-light btn-sm mt-auto">Verify Credential <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title mb-5">// featured_projects</h2>
+                <div class="row g-4">
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card glass-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">CortexVector – Agentic AI & RAG Math Tutor</h5>
+                                <p class="card-text">An Agentic AI math tutor using Mistral LLM and RAG to provide step-by-step solutions, built with LangGraph and Pinecone.</p>
+                                <div class="mt-auto">
+                                    <span class="badge tag-badge me-1">LangGraph</span>
+                                    <span class="badge tag-badge me-1">RAG</span>
+                                    <span class="badge tag-badge me-1">Pinecone</span>
+                                    <span class="badge tag-badge me-1">FastAPI</span>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="YOUR_LIVE_DEMO_URL" target="_blank" class="btn btn-primary">Live Demo</a>
+                                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#project1Modal">View Arch</button>
+                                    <a href="YOUR_GITHUB_REPO_URL" target="_blank" class="btn btn-link text-light"><i class="bi bi-github"></i> Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card glass-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">E-Commerce Sales Analytics Pipeline</h5>
+                                <p class="card-text">End-to-end ELT pipeline in Snowflake, ingesting real-time data from S3 via Snowpipe and transforming it using Streams & Tasks.</p>
+                                <div class="mt-auto">
+                                    <span class="badge tag-badge me-1">Snowflake</span>
+                                    <span class="badge tag-badge me-1">AWS S3</span>
+                                    <span class="badge tag-badge me-1">Snowpipe</span>
+                                    <span class="badge tag-badge me-1">FastAPI</span>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="YOUR_STREAMLIT_DASHBOARD_URL" target="_blank" class="btn btn-primary">Live Dashboard</a>
+                                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#project2Modal">View Arch</button>
+                                    <a href="YOUR_GITHUB_REPO_URL" target="_blank" class="btn btn-link text-light"><i class="bi bi-github"></i> Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title mb-5">// experience_&_lab</h2>
+                <div class="row">
+                    <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <h4><a href="https://cortexbloom.com"><i class="bi bi-pencil-square text-primary me-2"></i>CortexBloom: Personal AI Lab</a></h4>
+                        <p>CortexBloom is my self-directed initiative to build and deploy production-ready AI systems. It's my testbed for experimenting with advanced concepts like multi-agent systems, graph-based reasoning, and novel RAG architectures. All my featured projects were born here.</p>
+                    </div>
+                    
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="mb-4">Professional Timeline</h4>
+                        <ul class="timeline">
+                            <li class="timeline-item">
+                                <h5 class="fw-bold">Core AI Developer @ CortexBloom</h5>
+                                <span class="text-muted-custom">April 2025 – Present</span>
+                                <p>Self-directed initiative to build and deploy a suite of production-ready AI and Data projects.</p>
+                            </li>
+                            <li class="timeline-item">
+                                <h5 class="fw-bold">Data Engineer Intern @ Mactores</h5>
+                                <span class="text-muted-custom">March 2025 – Present</span>
+                                <p>Gained practical experience in AWS and Snowflake ecosystems, data warehousing, and building ELT workflows.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lab-notes" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title mb-5">// lab_notes</h2>
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card glass-card h-100">
+                            <div class="card-body">
+                                <p class="text-muted-custom small">Oct 20, 2025</p>
+                                <h5 class="card-title">Why I Chose LangGraph Over a Simple Chain</h5>
+                                <p class="card-text">Iterative reasoning required something more powerful...</p>
+                                <a href="#" class="btn btn-link ps-0 text-primary">Read More <i class="bi bi-arrow-right-short"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card glass-card h-100">
+                            <div class="card-body">
+                                <p class="text-muted-custom small">Oct 15, 2025</p>
+                                <h5 class="card-title">Learnings from My First Snowflake ELT Pipeline</h5>
+                                <p class="card-text">Understanding the interplay between Snowpipe, Streams, and Tasks...</p>
+                                <a href="#" class="btn btn-link ps-0 text-primary">Read More <i class="bi bi-arrow-right-short"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card glass-card h-100">
+                            <div class="card-body">
+                                <p class="text-muted-custom small">Oct 10, 2025</p>
+                                <h5 class="card-title">The Unsung Hero of RAG: Fine-Tuning Embeddings</h5>
+                                <p class="card-text">Retrieval is everything. I explored how fine-tuning an embedding model...</p>
+                                <a href="#" class="btn btn-link ps-0 text-primary">Read More <i class="bi bi-arrow-right-short"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-title mb-3">// get_in_touch</h2>
+                        <p class="lead mb-4">I'm actively seeking a full-time Data or AI Engineer role. If you have an opportunity or just want to talk tech, let's connect.</p>
+                        
+                        <div class="d-flex justify-content-center fs-2 gap-4 mb-4">
+                            <a href="https://www.linkedin.com/in/anujkothiyal/" target="_blank" class="text-light social-icon"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://github.com/anujkothiyal01" target="_blank" class="text-light social-icon"><i class="bi bi-github"></i></a>
+                            <a href="mailto:anujkothiyal01@gmail.com" class="text-light social-icon"><i class="bi bi-envelope-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center p-4">
+            <p class="mb-0 text-muted-custom small">Designed & Built by Anuj Kothiyal</p>
+        </footer>
+
+    </div> <div class="chat-bubble" id="chatBubble" style="display: none;">
+        <i class="bi bi-robot"></i>
+    </div>
+    
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <strong>Anuj's AI Twin</strong>
+            <button class="btn-close btn-sm" id="closeChatBtn"></button>
+        </div>
+        <div class="chat-body" id="chatMessages">
+            <div class="chat-message bot">
+                Hi! I'm Anuj's AI Twin, trained on his projects. Ask me about his skills, like "What's his experience with Snowflake?"
+            </div>
+            </div>
+        <form class="chat-footer" id="chatForm">
+            <input type="text" id="chatInput" class="form-control" placeholder="Type your message..." autocomplete="off">
+            <button type="submit" class="btn btn-primary"><i class="bi bi-send-fill"></i></button>
+        </form>
+    </div>
+
+
+    <div class="modal fade" id="project1Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-card">
+                <div class="modal-header">
+                    <h5 class="modal-title card-header-custom">CortexVector: Architecture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://via.placeholder.com/800x400.png?text=Your+CortexVector+Architecture+Diagram" alt="CortexVector Architecture" class="img-fluid">
+                </div>
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="script.js"></script>
+    <div class="modal fade" id="project2Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-card">
+                <div class="modal-header">
+                    <h5 class="modal-title card-header-custom">E-Commerce Pipeline: Architecture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://via.placeholder.com/800x400.png?text=Your+Snowflake+Pipeline+Architecture+Diagram" alt="E-Commerce Pipeline Architecture" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script src="script.js"></script>
 </body>
 </html>

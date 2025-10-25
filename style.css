@@ -1,700 +1,294 @@
-/* --- Google Font Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&family=Fira+Code:wght@400&display=swap');
+/* --- NEXT LEVEL THEME: "Developer OS" --- */
 
-/* --- CSS Variables (Theme) --- */
+/* 1. Root Variables & Body */
 :root {
-    --font-sans: 'Manrope', sans-serif;
-    --font-mono: 'Fira Code', monospace;
-    
-    --color-bg: #05050A;
-    --color-panel: #111118;
-    --color-glass-bg: rgba(26, 26, 30, 0.5); /* Semi-transparent panel */
-    --color-glass-border: rgba(255, 255, 255, 0.1);
-    
-    --color-text: #F0F0F5;
-    --color-text-dim: #A0A0B0;
-    
-    --color-accent: #00BFFF; /* Deep Sky Blue */
-    --color-accent-dim: rgba(0, 191, 255, 0.1);
-    --color-accent-hover: #009ACD;
-    
-    --shadow-glow: 0 0 30px rgba(0, 191, 255, 0.2);
-    --header-height: 80px; /* For scroll-padding */
-}
-
-/* --- Global Reset & Styles --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
+    --bs-dark: #0A192F;
+    --bs-dark-subtle: #172A45;
+    --bs-primary: #64FFDA; /* Electric Cyan/Green */
+    --bs-body-color: #CCD6F6;
+    --bs-body-bg: #0A192F;
+    --bs-border-color: rgba(100, 255, 218, 0.2);
+    --font-sans: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
 }
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.6;
-    overflow-x: hidden;
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    
+    /* Faint grid background */
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 25px 25px;
 }
 
-/* --- Animated Background --- */
-.background-gradient {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: radial-gradient(circle at 10% 20%, var(--color-accent-dim), var(--color-bg) 40%),
-                radial-gradient(circle at 90% 80%, rgba(138, 43, 226, 0.1), var(--color-bg) 40%);
-    animation: slow-spin 20s linear infinite;
-    z-index: -1;
-}
-
-@keyframes slow-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* --- Main Layout --- */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-/* --- Header / Navigation --- */
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    background: var(--color-glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 12px;
-    position: sticky;
-    top: 2rem;
-    z-index: 100;
-    height: var(--header-height);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-accent);
-}
-
-.main-nav {
-    display: flex;
-    gap: 1.5rem;
-}
-.nav-link {
+/* 2. Custom Typography & Links */
+h1, h2, h3, h4, h5, .navbar-brand, .section-title, .card-header-custom {
     font-family: var(--font-mono);
-    text-decoration: none;
-    color: var(--color-text-dim);
-    transition: color 0.3s ease;
+    color: #E6F1FF;
+    font-weight: 500;
 }
-.nav-link:hover, .nav-link.active {
-    color: var(--color-text);
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.btn-primary {
-    font-family: var(--font-sans);
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.btn-primary:hover {
-    background-color: var(--color-accent-hover);
-}
-
-.btn-secondary {
-    font-family: var(--font-sans);
-    background-color: var(--color-glass-bg);
-    color: var(--color-text);
-    border: 1px solid var(--color-glass-border);
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.mobile-menu-toggle { display: none; }
-.mobile-nav { display: none; }
-
-/* --- Content Window --- */
-.content-sections {
-    margin-top: 2rem;
-}
-.content-section {
-    /* Sections are now visible by default */
-    padding-top: calc(var(--header-height) + 2rem); /* Offset for sticky header */
-    margin-top: calc(var(--header-height) * -1 - 2rem); /* Pull section up to be "under" header */
-}
-.content-section:first-of-type {
-     /* The first section doesn't need the same offset */
-     padding-top: 0;
-     margin-top: 0;
-}
-
 
 .section-title {
-    font-family: var(--font-mono);
-    font-size: 1.5rem;
-    color: var(--color-accent);
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    border-bottom: 1px solid var(--color-glass-border);
-    padding-bottom: 0.5rem;
+    text-align: center;
+    color: var(--bs-primary);
+    font-size: 1.75rem;
 }
 
-/* --- Section: Home --- */
-.hero-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    align-items: center;
-    gap: 3rem;
-    min-height: 90vh; /* Make hero fill the viewport */
+a {
+    color: var(--bs-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
-/* ... (Hero styles are identical to previous response) ... */
-.hero-content h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.1;
+a:hover {
+    color: #fff;
 }
-.hero-subheadline {
-    font-size: 2rem;
+
+.text-muted-custom {
+    color: #A8B2D1 !important;
+}
+
+.badge.tag-badge {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--bs-primary);
+    font-family: var(--font-mono);
     font-weight: 400;
-    color: var(--color-text-dim);
-    margin-top: 1rem;
+    font-size: 0.75rem;
+    padding: 0.4em 0.6em;
 }
-#typed-target {
-    color: var(--color-accent);
-    font-weight: 700;
+
+/* 3. Buttons & Navbar */
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #0A192F;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
 }
-.hero-description {
-    font-size: 1.1rem;
-    color: var(--color-text-dim);
-    max-width: 500px;
-    margin: 1.5rem 0 2rem;
+.btn-primary:hover {
+    background-color: rgba(100, 255, 218, 0.8);
+    border-color: rgba(100, 255, 218, 0.8);
+    color: #0A192F;
 }
-.hero-actions {
-    display: flex;
-    gap: 1rem;
+
+.btn-outline-light {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
 }
-.hero-visual {
-    position: relative;
-    height: 100%;
-    min-height: 300px;
+.btn-outline-light:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--bs-primary);
+}
+
+.nav-link {
+    font-family: var(--font-mono);
+}
+
+/* 4. Glassmorphism Effect */
+.glass-nav, .glass-card, .modal-content, .chat-window {
+    background: rgba(23, 42, 69, 0.8); /* fallback */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-nav {
+    background: rgba(10, 25, 47, 0.85); /* Darker blur for nav */
+}
+
+.glass-card {
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border-color: rgba(100, 255, 218, 0.4);
+}
+
+/* 5. Hero Section */
+.hero-section {
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed var(--color-glass-border);
-    border-radius: 12px;
-    background: var(--color-panel);
+    text-align: center;
 }
-#agent-graph-animation {
-    width: 100%;
-    height: 100%;
-}
-.visual-label {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    font-family: var(--font-mono);
-    color: var(--color-text-dim);
-    font-size: 0.8rem;
+.hero-section h1 {
+    color: var(--bs-primary);
 }
 
-/* --- Section: Projects --- */
-/* ... (Project styles are identical to previous response) ... */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
+/* 6. Timeline */
+.timeline { list-style: none; padding: 0; position: relative; }
+.timeline:before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 0;
+    width: 2px; background-color: var(--bs-border-color);
 }
-.project-card {
-    background: var(--color-glass-bg);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-}
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-glow);
-    border-color: var(--color-accent);
-}
-.card-body {
-    padding: 1.5rem;
-    flex-grow: 1;
-}
-.card-icon {
-    font-size: 1.5rem;
-    color: var(--color-accent);
-    margin-bottom: 1rem;
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    border-radius: 8px;
-    background: var(--color-accent-dim);
-}
-.card-body h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-}
-.card-body p {
-    color: var(--color-text-dim);
-    font-size: 0.95rem;
-}
-.card-footer {
-    padding: 1.5rem;
-    border-top: 1px solid var(--color-glass-border);
-    background: var(--color-panel);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
-.tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-.tag-cloud span {
-    background-color: var(--color-accent-dim);
-    color: var(--color-accent);
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 700;
-}
-.card-links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.card-links a {
-    color: var(--color-text-dim);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-}
-.card-links a:hover {
-    color: var(--color-accent);
-}
-.ask-ai-link {
-    cursor: pointer;
+.timeline-item { margin-bottom: 20px; position: relative; padding-left: 25px; }
+.timeline-item:before {
+    content: ''; position: absolute; left: -6px; top: 5px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background-color: var(--bs-primary);
+    border: 2px solid var(--bs-body-bg);
+    z-index: 1;
 }
 
-/* --- Section: About --- */
-/* ... (About styles are identical to previous response) ... */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 3rem;
-}
-.about-summary h3, .about-skills h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-text);
-}
-.about-summary p {
-    color: var(--color-text-dim);
-    margin-bottom: 1.5rem;
-}
-.timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    border-left: 2px solid var(--color-glass-border);
-    padding-left: 1.5rem;
-}
-.timeline-item h4 {
-    color: var(--color-accent);
-}
-.timeline-item h5 {
-    color: var(--color-text-dim);
-    font-weight: 400;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-.timeline-item p {
-    font-size: 0.95rem;
-    color: var(--color-text-dim);
-}
-.skill-category {
-    margin-bottom: 1.5rem;
-}
-.skill-category h4 {
-    font-size: 1.1rem;
-    color: var(--color-accent);
-    margin-bottom: 0.75rem;
-}
+/* 7. Social Icons */
+.social-icon { transition: color 0.2s ease, transform 0.2s ease; }
+.social-icon:hover { color: var(--bs-primary) !important; transform: translateY(-3px); }
 
-/* --- Section: Contact --- */
-/* ... (Contact styles are identical to previous response) ... */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 3rem;
-}
-.contact-info h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-.contact-info p {
-    color: var(--color-text-dim);
-    margin-bottom: 2rem;
-}
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    color: var(--color-text-dim);
-}
-.info-item i {
-    font-size: 1.2rem;
-    color: var(--color-accent);
-}
-.form-group {
-    margin-bottom: 1.5rem;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--color-text-dim);
-    font-size: 0.9rem;
-}
-.form-group input, .form-group textarea {
-    width: 100%;
-    background-color: var(--color-glass-bg);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 8px;
-    padding: 0.75rem 1.25rem;
-    color: var(--color-text);
-    font-family: var(--font-sans);
-    font-size: 1rem;
-}
-.form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-glow);
-}
-.form-group textarea {
-    resize: vertical;
-}
-
-
-/* --- NEW: Agent Chat Modal Styles --- */
-.agent-modal-overlay {
+/* --- Boot Loader --- */
+#boot-loader {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 10, 15, 0.5);
-    backdrop-filter: blur(10px);
+    width: 100vw;
+    height: 100vh;
+    background: #0A192F;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    
-    /* Hide by default */
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
 }
-.agent-modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
+#boot-terminal {
+    width: 80%;
+    max-width: 600px;
+}
+#boot-terminal p {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--bs-primary);
+    margin-bottom: 0.5rem;
 }
 
-.agent-modal-overlay .chat-wrapper {
-    width: 100%;
-    max-width: 800px;
-    height: 80vh;
-    max-height: 700px;
-    background: var(--color-panel);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 12px;
+/* --- 7. AI Agent Chatbot --- */
+.chat-bubble {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--bs-primary);
+    color: #0A192F; /* Dark color for bright button */
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 50px rgba(0,0,0,0.3);
-    
-    /* Animation */
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(100, 255, 218, 0.3);
+    z-index: 1000;
+    transition: transform 0.2s ease;
 }
-.agent-modal-overlay.active .chat-wrapper {
-    transform: scale(1);
+
+.chat-bubble:hover {
+    transform: scale(1.1);
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    /* Glassmorphism is applied in section 4 */
+    border-radius: 12px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .chat-header {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--color-glass-border);
+    padding: 1rem;
+    background: rgba(10, 25, 47, 0.85);
+    border-bottom: 1px solid var(--bs-border-color);
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.75rem;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-.chat-header i {
-    color: var(--color-accent);
-}
-.status-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #00FF00; /* Green */
-    border-radius: 50%;
-    margin-left: auto;
-    box-shadow: 0 0 5px #00FF00;
-}
-.status-text {
-    color: var(--color-text-dim);
-    font-size: 0.9rem;
-}
-.chat-close-btn {
-    background: none;
-    border: none;
-    color: var(--color-text-dim);
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-left: 1rem;
-    padding: 0.25rem;
-}
-.chat-close-btn:hover {
-    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: #E6F1FF;
 }
 
-.chat-messages {
+.chat-body {
     flex-grow: 1;
+    padding: 1rem;
     overflow-y: auto;
-    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-}
-.message {
-    display: flex;
-    max-width: 80%;
-}
-.message p {
-    padding: 0.75rem 1.25rem;
-    border-radius: 12px;
-    line-height: 1.5;
-}
-.message.ai {
-    justify-content: flex-start;
-}
-.message.ai p {
-    background-color: var(--color-glass-bg);
-    border: 1px solid var(--color-glass-border);
-    border-bottom-left-radius: 0;
-}
-.message.user {
-    justify-content: flex-end;
-}
-.message.user p {
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-    border-bottom-right-radius: 0;
-}
-.message.typing p {
-    color: var(--color-text-dim);
-    font-style: italic;
-}
-
-.chat-input-area {
-    padding: 1.5rem;
-    border-top: 1px solid var(--color-glass-border);
-    flex-shrink: 0;
-}
-#chat-form {
-    display: flex;
-    gap: 1rem;
-}
-#chat-input {
-    flex-grow: 1;
-    background: var(--color-glass-bg);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 8px;
-    padding: 0.75rem 1.25rem;
-    color: var(--color-text);
+    gap: 0.75rem;
     font-family: var(--font-sans);
-    font-size: 1rem;
 }
-#chat-input:focus {
-    outline: none;
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-glow);
-}
-#chat-form button {
-    background: var(--color-accent);
-    border: none;
-    border-radius: 8px;
-    width: 45px;
-    height: 45px;
-    font-size: 1.2rem;
-    color: var(--color-bg);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-#chat-form button:hover {
-    background-color: var(--color-accent-hover);
-}
-/* --- End Modal Styles --- */
 
+.chat-message {
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    max-width: 85%;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
 
-/* --- Floating Agent Button --- */
-.agent-fab {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 60px;
-    height: 60px;
-    background: var(--color-accent);
-    color: var(--color-bg);
-    border: none;
+.chat-message.user {
+    background-color: var(--bs-primary);
+    color: #0A192F; /* Dark text for bright button */
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    font-weight: 500;
+}
+
+.chat-message.bot {
+    background-color: var(--bs-dark-subtle);
+    color: var(--bs-body-color);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+/* Typing Indicator (for chatbot) */
+.chat-typing-indicator {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+}
+.chat-typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background-color: var(--bs-primary);
     border-radius: 50%;
-    font-size: 1.8rem;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    box-shadow: var(--shadow-glow);
-    z-index: 900; /* Below modal overlay */
-    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0 2px;
+    animation: bounce 1s infinite;
 }
-.agent-fab:hover {
-    transform: scale(1.1);
-    background: var(--color-accent-hover);
+.chat-typing-indicator span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+.chat-typing-indicator span:nth-of-type(3) {
+    animation-delay: 0.4s;
 }
 
-/* --- Responsive (Mobile) --- */
-@media (max-width: 900px) {
-    .container {
-        padding: 1rem;
-    }
-    .main-header {
-        top: 1rem;
-        flex-wrap: wrap;
-        height: auto; /* Allow header to wrap */
-        min-height: 60px;
-    }
-    .main-nav, .header-actions .btn-primary {
-        display: none; /* Hide on mobile */
-    }
-    .mobile-menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: var(--color-text);
-        font-size: 1.8rem;
-        cursor: pointer;
-    }
-    .mobile-nav {
-        display: none; /* Hidden by default */
-        flex-direction: column;
-        gap: 0.5rem;
-        background: var(--color-glass-bg);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--color-glass-border);
-        border-radius: 12px;
-        padding: 1rem;
-        margin-top: 1rem;
-        width: 100%;
-        position: sticky; /* Make mobile nav sticky too */
-        top: calc(60px + 1.5rem);
-        z-index: 99;
-    }
-    .mobile-nav.active {
-        display: flex; /* Shown by JS */
-    }
-    .mobile-nav .nav-link {
-        padding: 0.75rem;
-        border-radius: 8px;
-    }
-    .mobile-nav .nav-link:hover, .mobile-nav .nav-link.active {
-        background: var(--color-accent-dim);
-        color: var(--color-accent);
-    }
-    
-    .content-section {
-        padding-top: 1rem; /* Simpler padding for mobile */
-        margin-top: 0;
-    }
-    #home {
-        padding-top: 1rem; /* Reset home padding */
-    }
+@keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-4px); }
+}
 
-    .hero-layout {
-        grid-template-columns: 1fr;
-        text-align: center;
-        min-height: 80vh;
-    }
-    .hero-content {
-        order: 2; /* Content below visual */
-    }
-    .hero-visual {
-        order: 1;
-    }
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    .hero-subheadline {
-        font-size: 1.5rem;
-    }
-    .hero-description {
-        margin: 1.5rem auto 2rem;
-    }
-    .hero-actions {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .about-grid, .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .agent-modal-overlay .chat-wrapper {
-        height: 90vh;
-        max-height: none;
-        width: 100%;
-        max-width: none;
-        border-radius: 0;
-        border: none;
-    }
-    .agent-fab {
-        bottom: 1rem;
-        right: 1rem;
-    }
+.chat-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--bs-border-color);
+    background: rgba(10, 25, 47, 0.85);
+    display: flex;
+    gap: 0.5rem;
+}
+.chat-footer .form-control {
+    background-color: var(--bs-dark-subtle);
+    border-color: var(--bs-border-color);
+    color: #fff;
+    font-family: var(--font-sans);
+}
+.chat-footer .form-control::placeholder {
+    color: var(--text-muted-custom);
 }
