@@ -16,8 +16,6 @@ body {
     font-family: var(--font-sans);
     background-color: var(--bs-body-bg);
     color: var(--bs-body-color);
-    
-    /* Faint grid background */
     background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 25px 25px;
@@ -89,7 +87,7 @@ a:hover {
 
 /* 4. Glassmorphism Effect */
 .glass-nav, .glass-card, .modal-content, .chat-window {
-    background: rgba(23, 42, 69, 0.8); /* fallback */
+    background: rgba(23, 42, 69, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -97,7 +95,7 @@ a:hover {
 }
 
 .glass-nav {
-    background: rgba(10, 25, 47, 0.85); /* Darker blur for nav */
+    background: rgba(10, 25, 47, 0.85);
 }
 
 .glass-card {
@@ -141,7 +139,7 @@ a:hover {
 .social-icon { transition: color 0.2s ease, transform 0.2s ease; }
 .social-icon:hover { color: var(--bs-primary) !important; transform: translateY(-3px); }
 
-/* --- Boot Loader --- */
+/* 8. Boot Loader */
 #boot-loader {
     position: fixed;
     top: 0;
@@ -165,7 +163,7 @@ a:hover {
     margin-bottom: 0.5rem;
 }
 
-/* --- 7. AI Agent Chatbot --- */
+/* 9. AI Agent Chatbot */
 .chat-bubble {
     position: fixed;
     bottom: 30px;
@@ -173,7 +171,7 @@ a:hover {
     width: 60px;
     height: 60px;
     background-color: var(--bs-primary);
-    color: #0A192F; /* Dark color for bright button */
+    color: #0A192F;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -195,11 +193,10 @@ a:hover {
     right: 30px;
     width: 350px;
     height: 500px;
-    /* Glassmorphism is applied in section 4 */
     border-radius: 12px;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
     z-index: 1001;
-    display: none; /* Hidden by default */
+    display: none;
     flex-direction: column;
     overflow: hidden;
 }
@@ -236,7 +233,7 @@ a:hover {
 
 .chat-message.user {
     background-color: var(--bs-primary);
-    color: #0A192F; /* Dark text for bright button */
+    color: #0A192F;
     align-self: flex-end;
     border-bottom-right-radius: 4px;
     font-weight: 500;
@@ -249,7 +246,6 @@ a:hover {
     border-bottom-left-radius: 4px;
 }
 
-/* Typing Indicator (for chatbot) */
 .chat-typing-indicator {
     display: flex;
     align-items: center;
@@ -291,4 +287,107 @@ a:hover {
 }
 .chat-footer .form-control::placeholder {
     color: var(--text-muted-custom);
+}
+
+/* --- Media Queries for Responsive Design --- */
+
+/* Mobile Devices (up to 576px) */
+@media (max-width: 576px) {
+    /* Typography */
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    .section-title { font-size: 1.25rem; }
+    body { font-size: 0.9rem; }
+
+    /* Hero Section */
+    .hero-section {
+        min-height: 60vh;
+        padding: 1rem;
+    }
+    .hero-section h1 { font-size: 1.5rem; }
+
+    /* Chat Window */
+    .chat-window {
+        width: 90vw;
+        height: 70vh;
+        bottom: 80px;
+        right: 5%;
+    }
+    .chat-bubble {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    .chat-message { font-size: 0.8rem; }
+    .chat-header { font-size: 0.9rem; }
+    .chat-footer .form-control { font-size: 0.8rem; }
+
+    /* Buttons */
+    .btn-primary, .btn-outline-light {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Timeline */
+    .timeline-item { padding-left: 20px; margin-bottom: 15px; }
+    .timeline-item:before { width: 12px; height: 12px; left: -5px; }
+
+    /* Boot Loader */
+    #boot-terminal {
+        width: 90%;
+        max-width: 400px;
+    }
+    #boot-terminal p { font-size: 0.9rem; }
+
+    /* Glass Card */
+    .glass-card { padding: 0.75rem; }
+    .glass-card:hover { transform: none; } /* Disable hover effect on mobile */
+}
+
+/* Tablet Devices (576px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    /* Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    .section-title { font-size: 1.5rem; }
+    body { font-size: 0.95rem; }
+
+    /* Hero Section */
+    .hero-section { min-height: 70vh; }
+    .hero-section h1 { font-size: 2rem; }
+
+    /* Chat Window */
+    .chat-window {
+        width: 80vw;
+        max-width: 400px;
+        height: 60vh;
+        bottom: 90px;
+        right: 20px;
+    }
+    .chat-bubble { width: 55px; height: 55px; font-size: 26px; }
+    .chat-message { font-size: 0.85rem; }
+
+    /* Buttons */
+    .btn-primary, .btn-outline-light {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    /* Timeline */
+    .timeline-item { padding-left: 22px; }
+    .timeline-item:before { width: 13px; height: 13px; }
+
+    /* Boot Loader */
+    #boot-terminal { width: 85%; }
+}
+
+/* Larger Devices (768px and above) */
+@media (min-width: 769px) {
+    /* Ensure desktop styles remain consistent */
+    .hero-section h1 { font-size: 2.5rem; }
+    .chat-window { width: 350px; height: 500px; }
+    .chat-bubble { width: 60px; height: 60px; font-size: 28px; }
 }
